@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+// use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('question.quiz');
-});
+// Route::get('/', function () {
+//     return view('question.quiz');
+// });
 
+use App\Http\Controllers\QuizController;
 
+Route::get('/quiz2', [QuizController::class, 'index']);
