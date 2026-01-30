@@ -17,6 +17,10 @@
 //     return view('question.quiz');
 // });
 
+// use App\Http\Controllers\QuizController;
+
+// Route::get('/quiz2', [QuizController::class, 'index']);
+
 use App\Http\Controllers\QuizController;
 
-Route::get('/quiz2', [QuizController::class, 'index']);
+Route::get('quiz3', [QuizController::class, 'show']);
