@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz3</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
     <table border="1">
@@ -14,15 +28,15 @@
             <th>作成日時</th>
             <th>更新日付</th>
         </tr>
-        <?php foreach($quizzes as $quiz): ?>
+        @foreach($quizzes as $quiz)
             <tr>
-                <td><?php echo $quiz['id']; ?></td>
-                <td><?php echo $quiz['name']; ?></td>
-                <td><?php echo $quiz['type']; ?></td>
-                <td><?php echo $quiz['created_at']; ?></td>
-                <td><?php echo $quiz['updated_at']; ?></td>
+                <td>{{ $quiz->id }}</td>
+                <td>{{ $quiz->name }}</td>
+                <td>{{ $quiz->type }}</td>
+                <td>{{ $quiz->created_at }}</td>
+                <td>{{ $quiz->updated_at }}</td>
             </tr>
-            <?php endforeach; ?>
+            @endforeach
     </table>
 </body>
 </html>

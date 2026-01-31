@@ -1,6 +1,7 @@
 <?php
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QuizController;
 
-// use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +14,26 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('question.quiz');
-// });
 
-// use App\Http\Controllers\QuizController;
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// Route::get('/quiz2', [QuizController::class, 'index']);
+// Quiz2用（学習記録）
+Route::get('/quiz2', [QuizController::class, 'index']);
 
-use App\Http\Controllers\QuizController;
+// Quiz3用（学習記録）
+Route::get('/quiz3', [QuizController::class, 'show']);
 
-Route::get('quiz3', [QuizController::class, 'show']);
+// Quiz4用（学習記録）
+Route::get('/quiz4', [QuizController::class, 'quiz4_show']);
+
+// Quiz5用（学習記録）
+Route::get('/quiz5', [QuizController::class, 'login']);
+
+Route::get('/quiz6_main', function () {
+    return view('common.main');
+    });
+    
+// Quiz6用（学習記録）
+Route::get('/quiz6', [QuizController::class, 'quiz6_show']);
