@@ -36,4 +36,10 @@ Route::get('/quiz6_main', function () {
     });
     
 // Quiz6用（学習記録）
-Route::get('/quiz6', [QuizController::class, 'quiz6_show']);
+Route::get('/quiz6', [QuizController::class, 'quiz6_show'])->name('quiz6_test');
+
+// Quiz7用（学習記録）
+Route::get('/quiz7', [QuizController::class, 'quiz7_show']);
+
+// Quiz8用（最新）- リダイレクト
+Route::get('/quiz8', [QuizController::class, 'quiz8_redirect']);

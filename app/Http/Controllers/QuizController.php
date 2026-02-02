@@ -55,7 +55,7 @@ class QuizController extends Controller
         return view('question.quiz5');
     }
 
-    // Quiz6用の関数（最新）
+    // Quiz6用の関数
      public function quiz6_show()
     {
         // Quizテーブルからデータを取得
@@ -64,4 +64,19 @@ class QuizController extends Controller
         // quiz6.blade.phpを開き、変数$quizzesを渡す
         return view('question.quiz6', compact('quizzes'));
     }
+
+    // Quiz7用の関数
+     public function quiz7_show()
+     {
+        // quiz7.blade.phpを表示
+        return view('question.quiz7');
+    }
+
+        // Quiz8用の関数（最新）- リダイレクト処理のみ
+     public function quiz8_redirect()
+     {
+        // quiz7にリダイレクト
+        return redirect('/quiz7');
+    }
+
 }
