@@ -68,15 +68,52 @@ class QuizController extends Controller
     // Quiz7用の関数
      public function quiz7_show()
      {
-        // quiz7.blade.phpを表示
-        return view('question.quiz7');
+        // // quiz7.blade.phpを表示
+        // return view('question.quiz7');
+        
+        // first()で、抽出対象データのうち初めの1件のみを取得
+        $quiz = Quiz::first();
+        return view('question.quiz7', compact('quiz'));
     }
 
         // Quiz8用の関数（最新）- リダイレクト処理のみ
      public function quiz8_redirect()
      {
-        // quiz7にリダイレクト
-        return redirect('/quiz7');
+            // first()で、抽出対象データのうち初めの1件のみを取得
+        $quiz = Quiz::first();
+        return view('question.quiz7', compact('quiz'));
+    }
+        // Quiz9用の関数（最新）
+    public function quiz9_show($id)
+    {
+        // 受け取ったidを元にQuizテーブルをfind関数でデータを抽出
+        $quiz = Quiz::find($id);
+        
+        // Bladeファイルに送る
+        return view('question.quiz9', compact('quiz'));
+    }
+    public function quiz10_show()
+    {
+        //クイズ登録画面を表示させる処理だけ行うこと
+        return view('question.quiz10');
+    }
+    // Qui10_store関数 - 登録処理
+    public function quiz10_store(Request $request)
+    {
+        // 1. 入力内容のバリデーションを行う
+        $request->validate([
+            'name' => 'required|max:30', // 必須、30文字以内
+            'type' => 'required',        // 必須
+            ]);
+
+        // 2. QUIZテーブルへの登録処理（create関数）
+        QUIZ::create([
+            'name' => $request->input('name'),
+            'type' => $request->input('type'),
+        ]);
+
+        // 3. クイズ登録画面にリダイレクト
+        return redirect('/quiz10')->with('success', '登録しました！');;
     }
 
 }

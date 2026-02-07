@@ -8,7 +8,7 @@
 <body>
     @extends('common.main')
 
-@section('content')
+    @section('content')
     @foreach($quizzes as $quiz)
         <div>
             <p>ID:{{ $quiz->id }}</p>
@@ -18,7 +18,7 @@
             <p>更新日：{{ $quiz->updated_at }}</p>
         </div>
     @endforeach
-@endsection
+    @endsection
 
 </body>
 </html>
