@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 // use Illuminate\Http\Controller;
-use Illuminate\Routing\Controller; 
 use App\Models\Quiz;
+use App\Models\Company;  // quiz11で追加
+use App\Models\Sale;     // quiz11で追加
+use Illuminate\Routing\Controller; 
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Http\Request;
 
 
@@ -97,6 +98,7 @@ class QuizController extends Controller
         //クイズ登録画面を表示させる処理だけ行うこと
         return view('question.quiz10');
     }
+
     // Qui10_store関数 - 登録処理
     public function quiz10_store(Request $request)
     {
@@ -116,4 +118,30 @@ class QuizController extends Controller
         return redirect('/quiz10')->with('success', '登録しました！');;
     }
 
+    // Quiz11用の関数（最新）
+    public function quiz11_show_all()
+    {
+        // all関数を用いてCompaniesテーブルとSalesテーブルから全件取得する
+        $companies = Company::all();
+        $sales = Sale::all();
+        
+        return view('question.quiz11', compact('companies', 'sales'));
+    }
+
+// Quiz11 - get関数で条件付き取得（最新）
+    public function quiz11_show_get()
+    {
+        // Companiesテーブル: 創立日が3月 かつ 住所に「テスト2」が含まれる
+        $companies = Company::where('founding_date', 'LIKE', '%-03-%')
+                            ->where('address', 'LIKE', '%テスト2%')
+                            ->get();
+        
+        // Salesテーブル: 会社ID=2 または 売上>8000、売上降順
+        $sales = Sale::where('company_id', '=', 2)
+                    ->orWhere('sales', '>', 8000)
+                    ->orderBy('sales', 'desc')
+                    ->get();
+        
+        return view('question.quiz11', compact('companies', 'sales'));
+    }
 }

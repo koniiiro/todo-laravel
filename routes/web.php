@@ -48,6 +48,10 @@ Route::get('/quiz8', [QuizController::class, 'quiz8_redirect']);
 Route::get('/quiz9/{id}', [QuizController::class, 'quiz9_show'])->name('quiz9_test');
 Route::post('/quiz9/{id}', [QuizController::class, 'quiz9_show']);
 
-// Quiz10用（最新）
+// Quiz10用（学習記録）
 Route::get('/quiz10', [QuizController::class, 'quiz10_show'])->name('quiz10_test');
 Route::post('/quiz10/store', [QuizController::class, 'quiz10_store'])->name('quiz10_test2');
+
+// Quiz11用（最新）
+Route::get('/quiz11/all', [QuizController::class, 'quiz11_show_all']);
+Route::get('/quiz11/get', [QuizController::class, 'quiz11_show_get']); 
