@@ -35,6 +35,10 @@
                 <td>{{ $quiz->type }}</td>
                 <td>{{ $quiz->created_at }}</td>
                 <td>{{ $quiz->updated_at }}</td>
+                <td>
+                {{-- 編集リンク --}}
+                <a href="{{ url('/quiz12/' . $quiz->id) }}">編集</a>
+            </td>
             </tr>
             @endforeach
     </table>

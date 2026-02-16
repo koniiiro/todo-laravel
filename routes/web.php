@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\MemberController;  // ← 会員登録システムで追加
 
 
 /*
@@ -52,6 +53,24 @@ Route::post('/quiz9/{id}', [QuizController::class, 'quiz9_show']);
 Route::get('/quiz10', [QuizController::class, 'quiz10_show'])->name('quiz10_test');
 Route::post('/quiz10/store', [QuizController::class, 'quiz10_store'])->name('quiz10_test2');
 
-// Quiz11用（最新）
+// Quiz11用（学習記録）
 Route::get('/quiz11/all', [QuizController::class, 'quiz11_show_all']);
 Route::get('/quiz11/get', [QuizController::class, 'quiz11_show_get']); 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Quiz12用（最新）
+// 編集画面を表示（GET）
+Route::get('/quiz12/{id}', [QuizController::class, 'quiz12_show'])->name('quiz12_test');
+// 更新処理（POST）
+Route::post('/quiz12/update/{id}', [QuizController::class, 'quiz12_update'])->name('quiz12_test2');
+
+
+// ========== 会員登録システムのルート ==========
+
+// 会員登録画面を表示する（GETリクエスト）
+Route::get('/register', [MemberController::class, 'register'])->name('register');
+
+// 会員登録処理を実行する（POSTリクエスト）
+Route::post('/register', [MemberController::class, 'store'])->name('member.store');

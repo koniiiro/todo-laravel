@@ -118,7 +118,7 @@ class QuizController extends Controller
         return redirect('/quiz10')->with('success', '登録しました！');;
     }
 
-    // Quiz11用の関数（最新）
+    // Quiz11用の関数
     public function quiz11_show_all()
     {
         // all関数を用いてCompaniesテーブルとSalesテーブルから全件取得する
@@ -128,7 +128,7 @@ class QuizController extends Controller
         return view('question.quiz11', compact('companies', 'sales'));
     }
 
-// Quiz11 - get関数で条件付き取得（最新）
+    // Quiz11 - get関数で条件付き取得
     public function quiz11_show_get()
     {
         // Companiesテーブル: 創立日が3月 かつ 住所に「テスト2」が含まれる
@@ -144,4 +144,36 @@ class QuizController extends Controller
         
         return view('question.quiz11', compact('companies', 'sales'));
     }
+
+    // Quiz12用の関数 - 編集画面表示
+    public function quiz12_show($id)
+    {
+        // 更新対象のデータを検索する
+        $quiz = Quiz::findOrFail($id);
+        
+        return view('question.quiz12', compact('quiz'));
+    }
+    
+    // Quiz12用の関数 - 更新処理
+    public function quiz12_update(Request $request, $id)
+    {
+        // 1. バリデーションを行う
+        $request->validate([
+            'name' => 'required|max:30',
+            'type' => 'required',
+        ]);
+        
+        // 2. 更新対象のデータを検索する
+        $quiz = Quiz::findOrFail($id);
+        
+        // 3. update関数で更新処理を行う
+        $quiz->update([
+            'name' => $request->input('name'),
+            'type' => $request->input('type'),
+        ]);
+        
+        // 4. quiz3.blade.phpが開かれるようにリダイレクト
+        return redirect('/quiz3');
+    }
+
 }
