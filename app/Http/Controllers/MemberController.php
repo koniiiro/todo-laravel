@@ -7,7 +7,19 @@ use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {
+ /**
+     * 会員一覧画面を表示
+     *
+     * URL: GET /top
+     */
+    public function top()
+    {
+        // ① DBから全会員データを取得
+        $members = Member::all();
 
+        // ② 取得したデータをビューに渡して表示
+        return view('top', compact('members'));
+    }
  /**
      * 会員登録画面を表示
      * 
@@ -47,8 +59,8 @@ class MemberController extends Controller
         // ステップ2: データベースに保存
         Member::create($validated);
 
-        // 一時的な確認用：保存したデータを表示
-        dd($member);  // ← この行を追加（一時的）
+        // // 一時的な確認用：保存したデータを表示
+        // dd($member);  // ← この行を追加（一時的）
 
         // ステップ3: 一覧画面にリダイレクト（成功メッセージ付き）
         return redirect('/top')->with('success', '会員を登録しました');

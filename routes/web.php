@@ -3,7 +3,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\MemberController;  // ← 会員登録システムで追加
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +13,6 @@ use App\Http\Controllers\MemberController;  // ← 会員登録システムで�
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -66,11 +64,14 @@ Route::get('/quiz12/{id}', [QuizController::class, 'quiz12_show'])->name('quiz12
 // 更新処理（POST）
 Route::post('/quiz12/update/{id}', [QuizController::class, 'quiz12_update'])->name('quiz12_test2');
 
-
 // ========== 会員登録システムのルート ==========
+
+// 会員一覧画面
+Route::get('/top', [MemberController::class, 'top'])->name('top');
 
 // 会員登録画面を表示する（GETリクエスト）
 Route::get('/register', [MemberController::class, 'register'])->name('register');
 
 // 会員登録処理を実行する（POSTリクエスト）
 Route::post('/register', [MemberController::class, 'store'])->name('member.store');
+
