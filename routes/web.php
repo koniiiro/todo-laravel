@@ -75,3 +75,13 @@ Route::get('/register', [MemberController::class, 'register'])->name('register')
 // 会員登録処理を実行する（POSTリクエスト）
 Route::post('/register', [MemberController::class, 'store'])->name('member.store');
 
+// ===== 編集関連 =====
+
+// 編集画面の表示（GETリクエスト）
+Route::get('/edit/{id}', [MemberController::class, 'edit'])->name('edit');
+
+// 更新処理（PUTリクエスト）
+Route::put('/edit/{id}', [MemberController::class, 'update'])->name('member.update');
+
+// 削除処理（DELETEリクエスト）
+Route::delete('/edit/{id}', [MemberController::class, 'destroy'])->name('member.destroy');
