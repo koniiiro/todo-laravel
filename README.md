@@ -1,66 +1,41 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# todo-laravel（タスク管理アプリケーション開発演習）
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+バックエンド開発における基本となるCRUD（Create, Read, Update, Delete）操作の実装、データベース設計、およびユーザー認証機能の統合を習得することを目的に作成したタスク管理アプリケーションです。
 
-## About Laravel
+## プロジェクトの目的と学び
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+* **CRUD処理の徹底理解**
+  タスクの「作成」「一覧表示」「編集・更新」「削除」という、Webアプリケーション開発において最も重要かつ基礎となるデータ操作のロジックを正確に実装する力を養いました。
+* **リレーショナルデータベースの操作**
+  ユーザーデータとタスクデータの紐付けなど、マイグレーションファイルを用いたテーブル構築や、Eloquent ORM（またはクエリビルダ）を使用した効率的なデータ取得方法を学びました。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 使用技術 / 開発環境
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* **言語 / フレームワーク:** PHP 8.x / Laravel
+* **データベース:** MySQL
+* **ローカル環境:** XAMPP / 各種ブラウザ検証ツール
+* **バージョン管理:** GitHub
 
-## Learning Laravel
+## 主な機能
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* ユーザー認証機能（新規会員登録、ログイン・ログアウト認証、セッション管理）
+* タスクの一覧表示および詳細表示機能
+* タスクの新規作成、編集、削除機能
+* タスクのステータス管理機能（未完了・完了の切り替えなど）
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## こだわった点・工夫したこと
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* **バリデーション（入力値チェック）の徹底**
+  意図しないデータや不正な値がデータベースに登録されるのを防ぐため、フォームリクエストやLaravel標準のバリデーション機能を適切に設定し、堅牢なシステム作りを意識しました。
+* **画面遷移とユーザー導線の意識**
+  ただ機能が動くだけでなく、利用者が直感的にタスクを追加・編集・削除できるよう、操作後のリダイレクト処理やエラーメッセージの表示など、ユーザーの利便性を考慮した設計を心がけました。
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+  ---
+# 📝 開発学習用メモ（公式ドキュメント・英語）
+今後の拡張や、技術の仕組みを英語で深く理解するための個人用リンク集です。
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+* [Routing / ルーティング](https://laravel.com/docs/routing) — URLと処理の紐付け
+* [Database ORM (Eloquent)](https://laravel.com/docs/eloquent) — 直感的なデータベース操作
+* [Schema Migrations / マイグレーション](https://laravel.com/docs/migrations) — テーブル構造のコード管理
+* [Laravel Bootcamp](https://bootcamp.laravel.com) — チュートリアル
